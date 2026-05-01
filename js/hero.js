@@ -33,8 +33,13 @@ function getFrameUrl(variant, frameIndex) {
   const bucket = variant.framePath;
   const fileName = `frame_${num}_delay-0.041s.png`;
   
-  // Using 'render' API instead of 'object' API to convert PNG to WebP on-the-fly
-  return `https://eadzretxoofyqjfmklit.supabase.co/storage/v1/render/image/public/${bucket}/${fileName}?format=webp&quality=85`;
+  // Mobile Optimization: Detect screen width
+  const isMobile = window.innerWidth < 768;
+  const width = isMobile ? 800 : 1600; // Smaller images for phones
+  const quality = isMobile ? 75 : 85;   // Slightly lower quality on mobile for speed
+  
+  // Using 'render' API to convert PNG to WebP and resize on-the-fly
+  return `https://eadzretxoofyqjfmklit.supabase.co/storage/v1/render/image/public/${bucket}/${fileName}?format=webp&quality=${quality}&width=${width}`;
 }
 
 class HeroController {
@@ -63,7 +68,7 @@ class HeroController {
     // Smooth Scrolling (LERP)
     this.targetProgress = 0;
     this.currentProgress = 0;
-    this.lerpFactor = 0.15; // Snappier response to capture fast motion like splashes
+    this.lerpFactor = window.innerWidth < 768 ? 0.25 : 0.15; // Snappier on mobile touch devices
 
     this.resizeCanvas();
     window.addEventListener('resize', () => this.resizeCanvas());
