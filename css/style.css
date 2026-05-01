@@ -1036,31 +1036,38 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 600px) {
-  .hero-content { padding-bottom: 20vh; } /* More space at bottom for small phones */
+  .hero-content { 
+    justify-content: flex-end; 
+    padding-bottom: 12vh; /* Precise bottom positioning */
+    height: 100vh;
+  }
+  .hero-text { 
+    background: linear-gradient(to top, rgba(10,10,10,0.95) 70%, transparent); /* Subtle dark fade behind text */
+    padding: 20px 0;
+    width: 100vw;
+    margin-left: -24px; /* Pull back from container padding */
+    padding-left: 24px;
+    padding-right: 24px;
+  }
   .hero-right { display: none; }
   .hero-mobile-nav {
     display: flex !important;
     position: absolute;
-    bottom: 40px; /* Lower down */
+    top: 45%; /* Place navigation arrows right around the drink area */
     left: 50%;
-    transform: translateX(-50%);
-    gap: 40px;
-    z-index: 20;
-    pointer-events: auto;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    justify-content: space-between;
+    gap: 0;
+    pointer-events: none;
   }
-  .hero-drink-name { font-size: 2.8rem; line-height: 1.2; margin-bottom: 4px; }
-  .hero-subtitle { margin-bottom: 12px; }
-  .hero-description { font-size: 0.85rem; padding: 0 15px; margin-bottom: 24px; line-height: 1.5; }
+  .hero-mobile-nav .variant-nav-btn { pointer-events: auto; background: rgba(0,0,0,0.2); border-radius: 50%; padding: 10px; }
   
-  .btn { width: 100%; max-width: 260px; padding: 12px 20px; }
-  .hero-ctas { flex-direction: column; align-items: center; }
+  .hero-drink-name { font-size: 2.5rem; line-height: 1.1; margin-bottom: 4px; }
+  .hero-description { font-size: 0.85rem; line-height: 1.4; margin-bottom: 20px; max-width: 300px; }
   
-  .footer-grid { grid-template-columns: 1fr; text-align: center; }
-  .footer-brand p { margin-left: auto; margin-right: auto; }
-  .footer-bottom { flex-direction: column; gap: 20px; }
-  
-  .nutrition-card { padding: 30px 20px; }
-  .nut-header { font-size: 1.5rem; }
+  .btn { width: 100%; max-width: 250px; }
+  .hero-ctas { flex-direction: column; align-items: center; gap: 10px; }
 }
 
 .hero-mobile-nav { display: none; }

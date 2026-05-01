@@ -283,24 +283,28 @@ class HeroController {
     if (img) {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       
-      // Contain-fit the image (ensure nothing is cut off)
+      const isMobile = window.innerWidth < 768;
+      
+      // Contain-fit the image
       const scale = Math.min(
         this.canvas.width / img.naturalWidth,
-        this.canvas.height / img.naturalHeight
+        (isMobile ? this.canvas.height * 0.6 : this.canvas.height) / img.naturalHeight
       );
+      
       const w = img.naturalWidth * scale;
       const h = img.naturalHeight * scale;
       const x = (this.canvas.width - w) / 2;
-      const y = (this.canvas.height - h) / 2;
+      
+      // Position: Centered on desktop, Pushed up on mobile
+      const y = isMobile ? (this.canvas.height * 0.35 - h / 2) : (this.canvas.height - h) / 2;
       
       this.ctx.imageSmoothingEnabled = true;
       this.ctx.imageSmoothingQuality = 'high';
       this.ctx.drawImage(img, x, y, w, h);
 
-      // Cover the 'Veo' watermark (bottom-right corner of the image)
-      // Approximate position: 95% right, 95% bottom
-      const maskW = w * 0.06; // ~75px on 1280px
-      const maskH = h * 0.05; // ~36px on 720px
+      // Cover the 'Veo' watermark
+      const maskW = w * 0.06;
+      const maskH = h * 0.05;
       const maskX = x + w - maskW - (w * 0.01); 
       const maskY = y + h - maskH - (h * 0.01);
       
