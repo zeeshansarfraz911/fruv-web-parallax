@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FRUV™ — Pure Blessing, Sip by Sip</title>
+  <meta name="description" content="FRUV is a modern functional drink brand inspired by classic flavors but made with better ingredients. Discover Mango, Lassi, and Milk in premium Tetra Pak cartons.">
+  <meta property="og:title" content="FRUV™ — Pure Blessing, Sip by Sip">
+  <meta property="og:description" content="A modern functional drink brand inspired by classic flavors but made with better ingredients.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+
+  <!-- ===== LOADING OVERLAY ===== -->
+  <div id="loader" role="status" aria-label="Loading FRUV experience">
+    <img src="assets/logo.png" alt="FRUV Logo" class="loader-logo">
+    <div class="loader-progress-wrap">
+      <div class="loader-progress-bar" id="loader-bar"></div>
+    </div>
+    <div class="loader-percent" id="loader-percent">Loading 0%</div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="#hero" aria-label="FRUV Home">
+        <img src="assets/logo.png" alt="FRUV™" class="nav-logo">
+      </a>
+      <div class="nav-links" id="nav-links" role="menubar">
+        <a href="#product" role="menuitem">Products</a>
+        <a href="#wholesale" role="menuitem" style="color: var(--accent); font-weight: 700;">Wholesale</a>
+        <a href="#ingredients" role="menuitem">Ingredients</a>
+        <a href="#reviews" role="menuitem">Reviews</a>
+        <a href="#faq" role="menuitem">FAQ</a>
+        <a href="#footer" role="menuitem">Contact</a>
+        <button class="nav-close-btn" id="nav-close" aria-label="Close menu" style="display:none;position:absolute;top:24px;right:24px;font-size:2rem;color:var(--text);">&times;</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section id="hero" aria-label="Hero">
+      <div class="hero-sticky">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <!-- removed overlay to ensure frames are visible -->
+
+        <div class="hero-content">
+          <!-- Left: Text -->
+          <div class="hero-text" id="hero-text">
+            <img src="assets/logo.png" alt="FRUV™" class="hero-logo-small">
+            <h1 class="hero-drink-name" id="hero-name">MANGO</h1>
+            <p class="hero-subtitle" id="hero-subtitle">fruit drink</p>
+            <p class="hero-description" id="hero-desc">A modern take on a classic fruit drink with a perfect blend of sweet and tart, full of nostalgic flavor.</p>
+            <div class="hero-ctas">
+              <a href="#cta" class="btn btn-outline" id="btn-add">BUY CARTON</a>
+              <a href="#wholesale" class="btn btn-white" id="btn-cart">BULK ORDER</a>
+            </div>
+          </div>
+
+
+          <!-- Right: Variant Nav -->
+          <div class="hero-right" id="hero-right">
+            <span class="hero-index" id="hero-index">01</span>
+            <div class="variant-nav-vertical">
+              <button class="variant-nav-btn" id="btn-prev" aria-label="Previous flavor">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+                <span>PREV</span>
+              </button>
+              <div class="variant-divider"></div>
+              <div class="variant-spinner" id="variant-spinner"></div>
+              <button class="variant-nav-btn" id="btn-next" aria-label="Next flavor">
+                <span>NEXT</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile variant nav -->
+        <div class="hero-mobile-nav" id="hero-mobile-nav">
+          <button class="variant-nav-btn" id="btn-prev-m" aria-label="Previous flavor">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span id="hero-index-m" style="display:none;">01</span>
+          <button class="variant-nav-btn" id="btn-next-m" aria-label="Next flavor">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+          </button>
+        </div>
+
+        <!-- Social icons -->
+        <div class="hero-social" aria-label="Social links">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l6.5 8L4 20h2l5.5-6.8L16 20h4l-6.8-8.5L20 4h-2l-5.2 6.3L8 4H4z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="4"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCT / ABOUT ===== -->
+    <section id="product" class="section">
+      <div class="container">
+        <div class="product-grid">
+          <div class="product-intro reveal text-center">
+            <span class="section-label">Our Lineup</span>
+            <h2 class="section-title">Pure Blessing,<br>Sip by Sip</h2>
+            <p class="section-subtitle mx-auto">FRUV™ is a premium functional drink brand based in Jhang, Pakistan. We use real ingredients and high-quality Tetra Pak cartons to ensure every sip is refreshing and natural.</p>
+          </div>
+
+          <div class="product-lineup">
+            <!-- No 1: Mango -->
+            <div class="lineup-item reveal">
+              <div class="lineup-img-wrap">
+                <img src="assets/product_mango.jpg" alt="Fruv Mango">
+              </div>
+              <h3>Fruv Mango</h3>
+              <p>12% Real Mango Pulp. No artificial colors. Just pure fruit goodness.</p>
+            </div>
+
+            <!-- No 2: Lassi -->
+            <div class="lineup-item reveal">
+              <div class="lineup-img-wrap">
+                <img src="assets/product_lassi.png" alt="Fruv Lassi">
+              </div>
+              <h3>Fruv Lassi</h3>
+              <p>Sweet & Creamy Premium Blend. A modern take on an authentic classic.</p>
+            </div>
+
+            <!-- No 3: Milk -->
+            <div class="lineup-item reveal">
+              <div class="lineup-img-wrap">
+                <img src="assets/product_milk.jpg" alt="Fruv Milk">
+              </div>
+              <h3>Fruv Milk</h3>
+              <p>Pure Full Cream Milk. 100% natural and fresh from the farm.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INGREDIENTS ===== -->
+    <section id="ingredients" class="section">
+      <div class="container text-center">
+        <span class="section-label reveal">What's Inside</span>
+        <h2 class="section-title reveal">Ingredients &amp; Benefits</h2>
+        <p class="section-subtitle mx-auto reveal">Carefully selected natural ingredients that deliver real nutrition and amazing taste.</p>
+
+        <div class="ingredients-grid">
+          <div class="ingredient-card reveal">
+            <div class="ingredient-icon">🥭</div>
+            <span class="ingredient-tooltip" title="100% natural fruit pulp">?</span>
+            <h3>Real Fruit Pulp</h3>
+            <p>Made with genuine fruit pulp — no concentrates or synthetic flavoring. Just real fruit in every sip.</p>
+          </div>
+          <div class="ingredient-card reveal">
+            <div class="ingredient-icon">💧</div>
+            <span class="ingredient-tooltip" title="Triple-filtered mineral water">?</span>
+            <h3>Pure Water</h3>
+            <p>Triple-filtered mineral water forms the base of every FRUV drink, ensuring clean, crisp hydration.</p>
+          </div>
+          <div class="ingredient-card reveal">
+            <div class="ingredient-icon">🍯</div>
+            <span class="ingredient-tooltip" title="Low glycemic natural sweetener">?</span>
+            <h3>Natural Sweetener</h3>
+            <p>Lightly sweetened with cane sugar and stevia for a balanced taste without the sugar crash.</p>
+          </div>
+          <div class="ingredient-card reveal">
+            <div class="ingredient-icon">⚡</div>
+            <span class="ingredient-tooltip" title="Essential vitamins per serving">?</span>
+            <h3>Vitamins B &amp; C</h3>
+            <p>Fortified with essential vitamins to support your energy, immunity, and overall wellness.</p>
+          </div>
+          <div class="ingredient-card reveal">
+            <div class="ingredient-icon">🌿</div>
+            <span class="ingredient-tooltip" title="No artificial preservatives used">?</span>
+            <h3>No Preservatives</h3>
+            <p>Tetra Pak technology keeps drinks fresh naturally — zero artificial preservatives needed.</p>
+          </div>
+          <div class="ingredient-card reveal">
+            <div class="ingredient-icon">🧬</div>
+            <span class="ingredient-tooltip" title="Supports digestive health">?</span>
+            <h3>Natural Fiber</h3>
+            <p>Contains natural dietary fiber from real fruit, supporting healthy digestion with every serving.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NUTRITION ===== -->
+    <section id="nutrition" class="section">
+      <div class="container text-center">
+        <span class="section-label reveal">The Numbers</span>
+        <h2 class="section-title reveal">Nutrition Facts</h2>
+        <p class="section-subtitle mx-auto reveal">Transparent nutrition for a healthier choice.</p>
+
+        <div class="nutrition-card reveal">
+          <div class="nut-header">Nutrition Facts</div>
+          <div class="nut-serving">Serving Size 200ml (1 carton)</div>
+          <div class="nut-row thick">
+            <span class="nut-label">Calories</span>
+            <span class="nut-value"><span class="counter-value" data-target="120">0</span></span>
+          </div>
+          <div class="nut-row">
+            <span class="nut-label">Total Fat</span>
+            <span class="nut-value"><span class="counter-value" data-target="0">0</span>g</span>
+          </div>
+          <div class="nut-row">
+            <span class="nut-label">Sodium</span>
+            <span class="nut-value"><span class="counter-value" data-target="15">0</span>mg</span>
+          </div>
+          <div class="nut-row">
+            <span class="nut-label">Total Carbohydrate</span>
+            <span class="nut-value"><span class="counter-value" data-target="29">0</span>g</span>
+          </div>
+          <div class="nut-row">
+            <span class="nut-label" style="padding-left:16px;">Total Sugars</span>
+            <span class="nut-value"><span class="counter-value" data-target="24">0</span>g</span>
+          </div>
+          <div class="nut-row">
+            <span class="nut-label">Protein</span>
+            <span class="nut-value"><span class="counter-value" data-target="1">0</span>g</span>
+          </div>
+          <div class="nut-row">
+            <span class="nut-label">Vitamin C</span>
+            <span class="nut-value"><span class="counter-value" data-target="50">0</span>%</span>
+          </div>
+          <div class="nut-row thick">
+            <span class="nut-label">Vitamin B6</span>
+            <span class="nut-value"><span class="counter-value" data-target="20">0</span>%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REVIEWS ===== -->
+    <section id="reviews" class="section">
+      <div class="container text-center">
+        <span class="section-label reveal">Testimonials</span>
+        <h2 class="section-title reveal">What People Say</h2>
+
+        <div class="reviews-carousel reveal" id="reviews-carousel">
+          <div class="reviews-track" id="reviews-track">
+            <div class="review-slide">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"FRUV Mango is hands down the best packaged fruit drink I've ever had. The flavor is so real — it literally tastes like biting into a fresh mango. Obsessed!"</p>
+              <div class="review-author">Ayesha K.</div>
+              <div class="review-role">Food Blogger, Lahore</div>
+            </div>
+            <div class="review-slide">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"Finally a Lassi that doesn't taste artificial. FRUV nailed the authentic desi flavor with a modern, clean twist. My whole family is hooked."</p>
+              <div class="review-author">Hassan R.</div>
+              <div class="review-role">Verified Customer</div>
+            </div>
+            <div class="review-slide">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"The Tetra Pak packaging is genius — stays fresh forever and looks premium. I keep one in my bag at all times. Better than any imported brand."</p>
+              <div class="review-author">Zara M.</div>
+              <div class="review-role">Fitness Coach, Karachi</div>
+            </div>
+            <div class="review-slide">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"Full cream milk that actually tastes like real milk! No weird aftertaste, no compromise. FRUV has set a new standard."</p>
+              <div class="review-author">Omar S.</div>
+              <div class="review-role">Nutritionist</div>
+            </div>
+          </div>
+          <div class="carousel-dots" id="carousel-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="section">
+      <div class="container text-center">
+        <span class="section-label reveal">Questions</span>
+        <h2 class="section-title reveal">Frequently Asked</h2>
+
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What makes FRUV different from other drinks?
+              <svg class="faq-chevron" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><p>FRUV uses real fruit pulp, natural sweeteners, and zero preservatives. Our Tetra Pak packaging keeps everything fresh without the need for artificial additives — it's functional, modern, and honestly delicious.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Where can I buy FRUV?
+              <svg class="faq-chevron" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><p>FRUV is available at leading supermarkets and convenience stores across Pakistan. You can also order directly through our website or find us on major delivery platforms.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Is FRUV suitable for children?
+              <svg class="faq-chevron" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><p>Absolutely! FRUV is made with 100% natural ingredients, no artificial colors or preservatives, making it a great choice for kids and adults alike.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What flavors are available?
+              <svg class="faq-chevron" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><p>We currently offer three variants: Mango (classic fruit drink), Lassi (premium yogurt blend), and Full Cream Milk. More exciting flavors are on the way!</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How long does FRUV stay fresh?
+              <svg class="faq-chevron" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><p>Thanks to Tetra Pak's aseptic packaging technology, FRUV stays fresh for up to 12 months without refrigeration. Once opened, consume within 3 days and keep refrigerated.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section id="cta" class="section">
+      <div class="container">
+        <div class="cta-wrapper">
+          <div class="cta-shape cta-shape-1"></div>
+          <div class="cta-shape cta-shape-2"></div>
+          <div class="reveal">
+            <h2 class="cta-title">Ready to Taste<br>the Difference?</h2>
+            <p class="cta-subtitle">Experience FRUV™ — where every sip is a pure blessing. Order now and discover your new favorite drink.</p>
+            <div class="cta-buttons">
+              <a href="#" class="btn btn-accent" id="cta-order">ORDER NOW</a>
+              <a href="#product" class="btn btn-outline" id="cta-learn">LEARN MORE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="FRUV™" class="footer-logo">
+          <p>A modern functional drink brand inspired by classic flavors but made with better ingredients. Pure blessing, sip by sip.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#product">Our Story</a>
+          <a href="#ingredients">Ingredients</a>
+          <a href="#nutrition">Nutrition</a>
+          <a href="#reviews">Reviews</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#footer">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copyright">&copy; 2026 FRUV™. Made in Pakistan. Jhang, Pakistan.</div>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l6.5 8L4 20h2l5.5-6.8L16 20h4l-6.8-8.5L20 4h-2l-5.2 6.3L8 4H4z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/hero.js?v=19"></script>
+  <script src="js/sections.js?v=2"></script>
+  <script src="js/app.js?v=2"></script>
+</body>
+</html>
