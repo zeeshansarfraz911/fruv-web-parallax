@@ -1003,26 +1003,27 @@ ul, ol { list-style: none; }
 
   .hero-content { 
     flex-direction: column; 
-    justify-content: center; 
+    justify-content: flex-end; /* Push text towards the bottom on mobile */
     text-align: center; 
-    padding: 0 24px;
+    padding: 0 24px 15vh; /* Large bottom padding to keep it above the social/nav */
   }
   .hero-text { 
     max-width: 100%; 
-    margin-top: -10vh; /* Lift text up slightly to center around the drink */
+    margin-top: 0;
+    z-index: 25;
   }
-  .hero-logo-small { height: 48px; margin: 0 auto 1.5rem; }
-  .hero-description { margin-left: auto; margin-right: auto; }
+  .hero-logo-small { height: 40px; margin: 0 auto 1rem; }
+  .hero-description { margin-left: auto; margin-right: auto; font-size: 0.9rem; }
   .hero-ctas { justify-content: center; }
   
   .hero-right { 
     position: absolute; 
     right: 24px; 
-    top: 50%; 
+    top: 30%; /* Move index higher up so it doesn't hit the text */
     transform: translateY(-50%); 
     gap: 12px; 
   }
-  .hero-index { font-size: 4rem; }
+  .hero-index { font-size: 3.5rem; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -1035,22 +1036,23 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 600px) {
-  .hero-text { margin-top: -15vh; }
+  .hero-content { padding-bottom: 20vh; } /* More space at bottom for small phones */
   .hero-right { display: none; }
   .hero-mobile-nav {
     display: flex !important;
     position: absolute;
-    bottom: 60px;
+    bottom: 40px; /* Lower down */
     left: 50%;
     transform: translateX(-50%);
-    gap: 32px;
+    gap: 40px;
     z-index: 20;
     pointer-events: auto;
   }
-  .hero-drink-name { font-size: 3.5rem; }
-  .hero-description { font-size: 0.9rem; padding: 0 10px; }
+  .hero-drink-name { font-size: 2.8rem; line-height: 1.2; margin-bottom: 4px; }
+  .hero-subtitle { margin-bottom: 12px; }
+  .hero-description { font-size: 0.85rem; padding: 0 15px; margin-bottom: 24px; line-height: 1.5; }
   
-  .btn { width: 100%; max-width: 280px; }
+  .btn { width: 100%; max-width: 260px; padding: 12px 20px; }
   .hero-ctas { flex-direction: column; align-items: center; }
   
   .footer-grid { grid-template-columns: 1fr; text-align: center; }
